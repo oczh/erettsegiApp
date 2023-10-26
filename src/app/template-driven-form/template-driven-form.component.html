@@ -1,0 +1,41 @@
+<h3>Kérlek add meg az informatika érettségi részfeladatain elért pontszámaid az eredményed kiszámításához!</h3>
+<form #erettsegiTDForm="ngForm" (ngSubmit)="onSubmit(erettsegiTDForm)" (change)="formChange()" novalidate>
+    <input type="number" id="spgw" name="spgw_pont" placeholder="Szövegszerkesztés, prezentáció, grafika, weblapkészítés"
+        ngModel #spP="ngModel" required min="0" max="30" ><br>
+    <div *ngIf="!spP.valid && (spP.dirty || spP.touched)">
+        Hibás a Szövegszerkesztés, prezentáció, grafika, weblapkészítés részfeladat mezőben megadott pontszám!
+        <span *ngIf="spP.errors?.['required']">A szövegszerkesztés... részfeladat mező kitöltése kötelező!</span>
+        <span *ngIf="spP.errors?.['min'] || spP.errors?.['max']">A szövegszerkesztés... részfeladat során elérhető pontszám 0-30 között lehetséges</span>
+    </div>
+    <input type="number" id="tablazat" name="tablazat_pont" placeholder="Táblázatkezelés" 
+        ngModel #taP="ngModel" required min="0" max="15" ><br>
+    <div *ngIf="!taP.valid && (taP.dirty || taP.touched)">
+        Hibás a Táblázatkezelés részfeladat mezőben megadott pontszám!
+        <span *ngIf="taP.errors?.['required']">A Táblázatkezelés részfeladat mező kitöltése kötelező!</span>
+        <span *ngIf="taP.errors?.['min'] || taP.errors?.['max']">A Táblázatkezelés részfeladat során elérhető pontszám 0-15 között lehetséges</span>
+    </div>
+    <input type="number" id="adatb" name="adatb_pont" placeholder="Adatbázis-kezelés" 
+        ngModel #adP="ngModel" required min="0" max="30" ><br>
+    <div *ngIf="!adP.valid && (adP.dirty || adP.touched)">
+        Hibás az Adatbázis-kezelés részfeladat mezőben megadott pontszám!
+        <span *ngIf="adP.errors?.['required']">Az Adatbázis-kezelés részfeladat mező kitöltése kötelező!</span>
+        <span *ngIf="adP.errors?.['min'] || adP.errors?.['max']">Az Adatbázis-kezelés részfeladat során elérhető pontszám 0-30 között lehetséges</span>
+    </div>
+    <input type="number" id="algoritmizalas" name="algoritmizalas_pont" placeholder="Algoritmizálás, adatmodellezés" 
+        ngModel #alP="ngModel" required min="0" max="45"><br>
+    <div *ngIf="!alP.valid && (alP.dirty || alP.touched)">
+        Hibás az Algoritmizálás, adatmodellezés részfeladat mezőben megadott pontszám!
+        <span *ngIf="alP.errors?.['required']">Az Algoritmizálás, adatmodellezés részfeladat mező kitöltése kötelező!</span>
+        <span *ngIf="alP.errors?.['min'] || alP.errors?.['max']">Az Algoritmizálás, adatmodellezés részfeladat során elérhető pontszám 0-45 között lehetséges</span>
+    </div>
+    <input type="number" id="szobeli" name="szobeli_pont" placeholder="Szóbeli" 
+        ngModel #szP="ngModel" required min="0" max="30"><br>
+    <div *ngIf="!szP.valid && (szP.dirty || szP.touched)">
+        Hibás a Szóbeli mezőben megadott pontszám!
+        <span *ngIf="szP.errors?.['required']">A Szóbeli mező kitöltése kötelező!</span>
+        <span *ngIf="szP.errors?.['min'] || szP.errors?.['max']">A Szóbeli során elérhető pontszám 0-30 között lehetséges</span>
+    </div>
+    <button type="submit" [disabled]="!erettsegiTDForm.valid">Beküldés</button><br>
+</form>
+<input disabled value="Eredményed: {{szazalek}}%"><br>
+<input disabled value="Érdemjegyed: {{erdemjegy}}">

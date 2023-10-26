@@ -1,0 +1,56 @@
+<h3>Kérlek add meg az informatika érettségi részfeladatain elért pontszámaid az eredményed kiszámításához!</h3>
+<form [formGroup]="eredmenyekUrlap" (ngSubmit)="onSubmit()" (change)="formChange()" novalidate>
+    <input type="number" id="spgw" name="spgw_pont" formControlName="spgwP" placeholder="Szövegszerkesztés, prezentáció, grafika, weblapkészítés"><br>
+    <div  *ngIf="!eredmenyekUrlap.controls['spgwP'].valid && (eredmenyekUrlap.controls['spgwP'].dirty || eredmenyekUrlap.controls['spgwP'].touched)">
+        Hibás a Szövegszerkesztés, prezentáció, grafika, weblapkészítés részfeladat mezőben megadott pontszám!
+        <div *ngIf="eredmenyekUrlap.controls['spgwP'].errors?.['min'] || eredmenyekUrlap.controls['spgwP'].errors?.['max']">
+            A Szövegszerkesztés... részfeladat során elérhető pontszám 0-30 között lehetséges!
+        </div>
+        <div *ngIf="eredmenyekUrlap.controls['spgwP'].errors?.['required']">
+            A Szövegszerkesztés... részfeladat mező kitöltése kötelező!
+        </div>
+    </div>
+    <input type="number" id="tablazat" name="tablázat_pont" formControlName="tablP" placeholder="Táblázatkezelés"><br>
+    <div  *ngIf="!eredmenyekUrlap.controls['tablP'].valid && (eredmenyekUrlap.controls['tablP'].dirty || eredmenyekUrlap.controls['tablP'].touched)">
+        Hibás a Táblázatkezelés részfeladat mezőben megadott pontszám!
+        <div *ngIf="eredmenyekUrlap.controls['tablP'].errors?.['min'] || eredmenyekUrlap.controls['tablP'].errors?.['max']">
+            A Táblázatkezelés részfeladat során elérhető pontszám 0-15 között lehetséges!
+        </div>
+        <div *ngIf="eredmenyekUrlap.controls['tablP'].errors?.['required']">
+            A Táblázatkezelés részfeladat mező kitöltése kötelező!
+        </div>
+    </div>
+    <input type="number" id="adatb" name="adatb_pont" formControlName="adbazP" placeholder="Adatbázis-kezelés"><br>
+    <div  *ngIf="!eredmenyekUrlap.controls['adbazP'].valid && (eredmenyekUrlap.controls['adbazP'].dirty || eredmenyekUrlap.controls['adbazP'].touched)">
+        Hibás az Adatbázis-kezelés részfeladat mezőben megadott pontszám!
+        <div *ngIf="eredmenyekUrlap.controls['adbazP'].errors?.['min'] || eredmenyekUrlap.controls['adbazP'].errors?.['max']">
+            Az Adatbázis-kezelés részfeladat során elérhető pontszám 0-30 között lehetséges!
+        </div>
+        <div *ngIf="eredmenyekUrlap.controls['adbazP'].errors?.['required']">
+            Az Adatbázis-kezelés részfeladat mező kitöltése kötelező!
+        </div>
+    </div>
+    <input type="number" id="algoritmizalas" name="algoritmizalas_pont" formControlName="algoP" placeholder="Algoritmizálás, adatmodellezés"><br>
+    <div  *ngIf="!eredmenyekUrlap.controls['algoP'].valid && (eredmenyekUrlap.controls['algoP'].dirty || eredmenyekUrlap.controls['algoP'].touched)">
+        Hibás az Algoritmizálás, adatmodellezés részfeladat mezőben megadott pontszám!
+        <div *ngIf="eredmenyekUrlap.controls['algoP'].errors?.['min'] || eredmenyekUrlap.controls['algoP'].errors?.['max']">
+            Az Algoritmizálás, adatmodellezés részfeladat során elérhető pontszám 0-45 között lehetséges!
+        </div>
+        <div *ngIf="eredmenyekUrlap.controls['algoP'].errors?.['required']">
+            Az Algoritmizálás, adatmodellezés részfeladat mező kitöltése kötelező!
+        </div>
+    </div>
+    <input type="number" id="szobeli" name="szobeli_pont" formControlName="szobP" placeholder="Szóbeli"><br>
+    <div  *ngIf="!eredmenyekUrlap.controls['szobP'].valid && (eredmenyekUrlap.controls['szobP'].dirty || eredmenyekUrlap.controls['szobP'].touched)">
+        Hibás a Szóbeli mezőben megadott pontszám!
+        <div *ngIf="eredmenyekUrlap.controls['szobP'].errors?.['min'] || eredmenyekUrlap.controls['szobP'].errors?.['max']">
+            A Szóbeli során elérhető pontszám 0-30 között lehetséges!
+        </div>
+        <div *ngIf="eredmenyekUrlap.controls['szobP'].errors?.['required']">
+            A Szóbeli mező kitöltése kötelező!
+        </div>
+    </div>
+    <button type="submit" [disabled]="!eredmenyekUrlap.valid">Beküldés</button><br>
+</form>
+<input disabled value="Eredményed: {{szazalek}}%"><br>
+<input disabled value="Érdemjegyed: {{erdemjegy}}">
